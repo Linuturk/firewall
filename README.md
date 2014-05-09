@@ -1,6 +1,8 @@
 firewall
 ========
 
+[![Build Status](https://drone-opsdev.rax.io/github.com/rack-roles/firewall/status.svg?branch=master)](https://drone-opsdev.rax.io/github.com/rack-roles/firewall)
+
 Uses the Ansible ufw module to manage firewall rules.
 
 Requirements
