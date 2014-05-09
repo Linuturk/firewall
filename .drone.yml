@@ -1,7 +1,7 @@
 image: linuturk/ubuntu-ansible
 script:
-  - apt-get install openssh-server -y
   - git clone https://github.com/rack-roles/test.ping
   - bash test.ping/lint.sh
+  - apt-get install openssh-server -y
   - ansible-galaxy install -r /var/cache/drone/src/github.com/rack-roles/firewall/tests/roles.list
   - ansible-playbook /var/cache/drone/src/github.com/rack-roles/firewall/tests/main.yml --connection=local
