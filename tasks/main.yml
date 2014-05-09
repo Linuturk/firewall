@@ -1,2 +1,15 @@
 ---
 # tasks file for firewall
+- name: ensure ufw is installed
+  apt: name=ufw state=installed update_cache=yes cache_valid_time=86400
+
+- name: allow services before enabling firewall
+  ufw: rule=allow name={{ item }}
+  with_items: firewall_allowed_services
+
+- name: allow ports before enabling firewall
+  ufw: rule=allow port={{ item.port }} proto={{ item.proto }}
+  with_items: firewall_allowed_ports
+
+- name: enable ufw and block everything else
+  ufw: state=enabled policy=deny
