@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  vars:
+    rax_pub_keys:
+      - ""
+  roles:
+    - Rackspace_Automation.base
