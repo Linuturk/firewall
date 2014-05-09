@@ -3,3 +3,4 @@ script:
   - apt-get install openssh-server -y
   - ansible-galaxy install -r /var/cache/drone/src/github.com/rack-roles/firewall/tests/roles.list
   - ansible-playbook /var/cache/drone/src/github.com/rack-roles/firewall/tests/main.yml --connection=local
+  -
