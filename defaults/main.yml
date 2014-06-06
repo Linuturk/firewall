@@ -1,7 +1,4 @@
 ---
 # defaults file for firewall
 firewall_allowed_services:
-  - OpenSSH
 firewall_allowed_ports:
-  - port: 80
-    proto: tcp
