@@ -1,4 +1,4 @@
 ---
 # defaults file for firewall
-firewall_allowed_services:
-firewall_allowed_ports:
+#firewall_allowed_services:
+#firewall_allowed_ports:
