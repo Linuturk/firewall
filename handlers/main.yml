@@ -1,2 +1,4 @@
 ---
 # handlers file for firewall
+- name: restart iptables
+  service: name=iptables state=restarted
