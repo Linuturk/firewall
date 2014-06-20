@@ -1,17 +1,17 @@
 ---
 # tasks file for firewall
-- name: ensure ufw is installed
-  apt: name=ufw state=installed update_cache=yes cache_valid_time=86400
+- name: include os specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
 
-- name: allow services before enabling firewall
-  ufw: rule=allow name={{ item }}
-  with_items: firewall_allowed_services
-  when: firewall_allowed_services is defined
+- name: Include RedHat specific tasks
+  include: RedHat.yml
+  when: ansible_os_family == 'RedHat'
 
-- name: allow ports before enabling firewall
-  ufw: rule=allow port={{ item.port }} proto={{ item.proto }}
-  with_items: firewall_allowed_ports
-  when: firewall_allowed_ports is defined
+- name: Include Debian specific tasks
+  include: Debian.yml
+  when: ansible_os_family == 'Debian'
 
-- name: enable ufw and block everything else
-  ufw: state=enabled policy=deny
+- name: Check for unsupported target operating system
+  fail:
+    msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported."
+  when: firewall_supported_os is not defined

@@ -1,0 +1,6 @@
+---
+- name: >
+    RedHat | set_fact
+      firewall_supported_os: True
+  set_fact:
+    firewall_supported_os: True
